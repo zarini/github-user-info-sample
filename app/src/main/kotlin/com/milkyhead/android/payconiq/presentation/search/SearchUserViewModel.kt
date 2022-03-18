@@ -135,7 +135,7 @@ internal class SearchUserViewModel @Inject constructor(
     }
 
 
-    private companion object {
+    internal companion object {
         const val KEY_LAST_STATE = "search_last_state"
         const val KEY_LAST_PAGE = "search_last_page"
         const val KEY_LAST_QUERY = "search_last_query"
