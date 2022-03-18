@@ -16,5 +16,5 @@ data class UserDto(
     @SerializedName("login")
     val login: String,
     @SerializedName("avatar_url")
-    val avatar: String
+    val avatar: String?
 )
