@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="search_user_card_avatar_size">96dp</dimen>
+    <dimen name="search_user_card_corner_size">8dp</dimen>
+    <dimen name="search_user_card_avatar_margin">10dp</dimen>
+    <dimen name="search_box_size">48dp</dimen>
+</resources>

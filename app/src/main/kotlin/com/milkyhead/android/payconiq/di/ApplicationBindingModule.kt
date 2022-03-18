@@ -8,6 +8,8 @@ import com.milkyhead.android.payconiq.domain.usecase.DefaultGetUserDetailsUseCas
 import com.milkyhead.android.payconiq.domain.usecase.DefaultSearchUserUseCase
 import com.milkyhead.android.payconiq.domain.usecase.GetUserDetailsUseCase
 import com.milkyhead.android.payconiq.domain.usecase.SearchUserUseCase
+import com.milkyhead.android.payconiq.presentation.error.DefaultErrorHandler
+import com.milkyhead.android.payconiq.presentation.error.ErrorHandler
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -41,4 +43,10 @@ abstract class ApplicationBindingModule {
     internal abstract fun bindSearchUserUseCase(
         defaultSearchUserUseCase: DefaultSearchUserUseCase
     ): SearchUserUseCase
+
+    @Binds
+    @Singleton
+    internal abstract fun bindErrorHandler(
+        defaultErrorHandler: DefaultErrorHandler
+    ): ErrorHandler
 }

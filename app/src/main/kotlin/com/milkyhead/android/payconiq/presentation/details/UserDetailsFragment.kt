@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.milkyhead.android.payconiq.databinding.FragmentUserDetailsBinding
 import com.milkyhead.android.payconiq.presentation.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,5 +32,6 @@ internal class UserDetailsFragment : BaseFragment() {
     }
 
     override fun onBackPressed() {
+        findNavController().popBackStack()
     }
 }
