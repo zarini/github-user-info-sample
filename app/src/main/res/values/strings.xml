@@ -8,4 +8,7 @@
     <string name="select_user_transition_name">github_user_transition</string>
     <string name="retry">Retry</string>
     <string name="search_empty_state">Find the github users you need in short time!</string>
+    <string name="repository_title">Repository</string>
+    <string name="followers_title">Followers</string>
+    <string name="following_title">Following</string>
 </resources>

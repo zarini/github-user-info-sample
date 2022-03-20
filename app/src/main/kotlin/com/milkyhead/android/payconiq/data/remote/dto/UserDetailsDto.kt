@@ -10,12 +10,12 @@ data class UserDetailsDto(
     val login: String,
     @SerializedName("avatar_url")
     val avatar: String?,
-    @SerializedName("url")
-    val url: String,
+    @SerializedName("html_url")
+    val url: String?,
     @SerializedName("type")
     val type: String?,
     @SerializedName("name")
-    val fullName: String,
+    val fullName: String?,
     @SerializedName("company")
     val company: String?,
     @SerializedName("blog")
@@ -33,7 +33,7 @@ data class UserDetailsDto(
     @SerializedName("public_gists")
     val publicGistCount: Int?,
     @SerializedName("followers")
-    val followers: Int,
+    val followers: Int?,
     @SerializedName("following")
-    val following: Int
+    val following: Int?
 )

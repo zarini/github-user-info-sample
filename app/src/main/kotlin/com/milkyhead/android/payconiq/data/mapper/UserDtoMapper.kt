@@ -36,8 +36,8 @@ internal fun UserDetailsDto.mapToUserDetailsModel(): UserDetailsModel {
         email = email,
         bio = bio,
         twitterUserName = twitterUserName,
-        publicRepoCount = publicRepoCount,
-        followers = followers,
-        following = following
+        publicRepoCount = publicRepoCount ?: 0,
+        followers = followers ?: 0,
+        following = following ?: 0
     )
 }

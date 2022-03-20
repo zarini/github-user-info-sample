@@ -3,6 +3,8 @@ package com.milkyhead.android.payconiq.core
 import android.content.res.Resources
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
+import android.view.ViewTreeObserver
 import android.widget.EditText
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
@@ -13,6 +15,13 @@ import kotlin.math.roundToInt
 
 val Int.dp: Int get() = (this * Resources.getSystem().displayMetrics.density).roundToInt()
 
+fun View?.show() {
+    this?.visibility = View.VISIBLE
+}
+
+fun View?.gone() {
+    this?.visibility = View.GONE
+}
 
 fun CoroutineScope.doAfterTextChanged(
     delay: Long = 500L,
@@ -32,4 +41,19 @@ fun CoroutineScope.doAfterTextChanged(
         }
     }
     editText.addTextChangedListener(listener)
+}
+
+inline fun <T : View> T.afterMeasured(crossinline block: T.() -> Unit) {
+    viewTreeObserver.addOnGlobalLayoutListener(object :
+        ViewTreeObserver.OnGlobalLayoutListener {
+        override fun onGlobalLayout() {
+            if (!viewTreeObserver.isAlive) {
+                return
+            }
+            if (measuredWidth > 0 && measuredHeight > 0) {
+                viewTreeObserver.removeOnGlobalLayoutListener(this)
+                block()
+            }
+        }
+    })
 }

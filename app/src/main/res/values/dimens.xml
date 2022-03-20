@@ -4,4 +4,9 @@
     <dimen name="search_user_card_corner_size">8dp</dimen>
     <dimen name="search_user_card_avatar_margin">10dp</dimen>
     <dimen name="search_box_size">48dp</dimen>
+    <dimen name="user_details_avatar_size">150dp</dimen>
+    <dimen name="user_details_information_top_margin">10dp</dimen>
+    <dimen name="user_details_information_top_extra_margin">20dp</dimen>
+    <dimen name="user_details_guide_size">20dp</dimen>
+    <dimen name="user_details_fullname_margin">30dp</dimen>
 </resources>

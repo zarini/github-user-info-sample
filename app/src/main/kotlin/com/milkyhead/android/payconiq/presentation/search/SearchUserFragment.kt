@@ -13,7 +13,7 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.milkyhead.android.payconiq.R
-import com.milkyhead.android.payconiq.core.Constants.KEY_USER_MODEL
+import com.milkyhead.android.payconiq.core.Constants
 import com.milkyhead.android.payconiq.core.doAfterTextChanged
 import com.milkyhead.android.payconiq.databinding.FragmentSearchUserBinding
 import com.milkyhead.android.payconiq.presentation.BaseFragment
@@ -165,7 +165,10 @@ internal class SearchUserFragment : BaseFragment() {
                 findNavController().navigate(
                     resId = R.id.action_searchUserFragment_to_userDetailsFragment,
                     args = Bundle().apply {
-                        putParcelable(KEY_USER_MODEL, userModel)
+                        putString(Constants.KEY_USER_NAME, userModel.username)
+                        userModel.avatar?.let { avatar ->
+                            putString(Constants.KEY_USER_AVATAR, avatar)
+                        }
                     },
                     navOptions = null,
                     navigatorExtras = extras
