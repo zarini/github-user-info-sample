@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
@@ -168,6 +169,11 @@ internal class SearchUserFragment : BaseFragment() {
                     imageView to getString(R.string.select_user_transition_name)
                 )
 
+                val option = NavOptions.Builder()
+                    .setExitAnim(android.R.anim.fade_out)
+                    .setPopExitAnim(android.R.anim.slide_out_right)
+                    .build()
+
                 findNavController().navigate(
                     resId = R.id.action_searchUserFragment_to_userDetailsFragment,
                     args = Bundle().apply {
@@ -176,7 +182,7 @@ internal class SearchUserFragment : BaseFragment() {
                             putString(Constants.KEY_USER_AVATAR, avatar)
                         }
                     },
-                    navOptions = null,
+                    navOptions = option,
                     navigatorExtras = extras
                 )
             }
