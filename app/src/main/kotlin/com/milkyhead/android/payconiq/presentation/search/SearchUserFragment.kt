@@ -15,6 +15,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.milkyhead.android.payconiq.R
 import com.milkyhead.android.payconiq.core.Constants
 import com.milkyhead.android.payconiq.core.doAfterTextChanged
+import com.milkyhead.android.payconiq.core.gone
+import com.milkyhead.android.payconiq.core.show
 import com.milkyhead.android.payconiq.databinding.FragmentSearchUserBinding
 import com.milkyhead.android.payconiq.presentation.BaseFragment
 import com.milkyhead.android.payconiq.presentation.event.SearchEvent
@@ -65,7 +67,6 @@ internal class SearchUserFragment : BaseFragment() {
                 viewModel.state.collectLatest { state ->
                     when {
                         state.loading -> {
-                            binding.searchEmptyStateTitle.visibility = View.GONE
                             adapter.isLoading = true
                         }
 
@@ -110,8 +111,8 @@ internal class SearchUserFragment : BaseFragment() {
                             adapter.noMoreData = false
                             adapter.clearData()
                             binding.searchResultCount.text = ""
+                            binding.searchEmptyStateTitle.show()
                             dismissErrorMessage()
-                            binding.searchEmptyStateTitle.visibility = View.VISIBLE
                         }
                     }
                 }
@@ -125,6 +126,11 @@ internal class SearchUserFragment : BaseFragment() {
             binding.searchBox
         ) { query ->
             dismissErrorMessage()
+            if (query.isBlank()) {
+                binding.searchEmptyStateTitle.show()
+            } else {
+                binding.searchEmptyStateTitle.gone()
+            }
             viewModel.search(
                 SearchEvent(
                     query = query
